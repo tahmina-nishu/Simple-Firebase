@@ -11,3 +11,103 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+<!--
+ ----------------------STEPS-----------------------------  
+ 
+ 1. create project folder 
+    -> Go to cmd
+    -> enter "cd \projects"
+    -> create folder by entering "npm create vite@latest projectName -- --template react"
+
+ 2. install react router 
+    -> enter "npm install react-router-dom npm install localforage match-sorter sort-by"
+    -> open the code in vs code & run 
+    -> clear everything in 'App.jsx'
+
+ 3. Create and render a browser router in 'main.jsx'
+    -> import {
+          createBrowserRouter,
+          RouterProvider,
+        } from "react-router-dom";
+    -> const router = createBrowserRouter([
+          {
+            path: "/",
+            element: <div>Hello world!</div>,
+          },
+        ]);
+    -> '<RouterProvider router={router} />' instead of 'App'
+
+ 4. create a 'components' folder
+ 5. create some folder in components and their component in the folder
+    (a) Home
+    (b) Header
+    (c) layout (Main.jsx)
+    (d) Login
+
+ 6. Layout e <Header></Header>
+            <Outlet></Outlet> dibo 
+ 7. Set route in 'main.jsx'
+            children: [
+              {
+                path: '/',
+                element: <Home></Home>
+              },
+              {
+                path: '/Login',
+                element: <Login></Login>
+              },
+            ]
+
+ 8. create 'Navlink' in header (Home, Login duita banabo)
+ 9. set firebase
+    (a) search 'firebase' in any browser
+    (b) click 'Go to console'
+    (c) click 'Create a project'
+    (d) enter project name and continue
+    (e) click at the web sign and write project name again then regester
+    (f) install firebase by entering "npm install firebase"
+    (g) create a component "Firebase" and a file "firebase.init.js" and copy paste the config given in firebase after regester
+          N.B: config ta amra normally client side e rakhbona. but apatoto shurur dike ekhane rakhtechi)
+    (h) export 'App'
+    
+ 10. Create "Login with google" button using firebase
+    -> go to "firebase.google.com" --- > Build --- > Authentication --- > View docs --- > Web (in left side) --- > Get started and copu 2 lines 
+                import { getAuth } from "firebase/auth";
+                // Initialize Firebase Authentication and get a reference to the service
+                const auth = getAuth(app);
+       and paste in 'firebase.init.js' and export 'auth' istead of 'App'
+    -> click google (in left side) --- > click 'Firebase console' --- > go to your project --- > Build --- > Authentication --- > Get started
+    -> select your sign in provider (Google, Github etc.)
+    -> on enable in right top corner
+    -> set mail then save
+
+ 11. add onClick handler and a function in button
+ 12. Create handler function
+ 
+ 13. Create an instance of the Google provider object in just before the handling function using:
+          import { GoogleAuthProvider } from "firebase/auth";
+          const provider = new GoogleAuthProvider();
+    
+ 14. function 
+          const handleGoogleSignIn = () => {
+        console.log(auth, provider);
+        signInWithPopup(auth, provider)
+        .then((result) =>{
+            console.log(result);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+        }
+
+ 15. set Github as like as Google 
+    -> create function
+    -> add github provider
+    -> go to github --- > settings --- > developer settings --- > OAuth Apps --- > New oAuth App --- > set Application name (project e j name ta dichi) --- > Homepage URL (run dev diye run korar por login e gele jei link ta asbe seta copy paste korbo) --- > Callback URL (firebase e nicher dike ekta link thakbe eta copy paste) --- > Regester
+    -> tarpor firebase e ja ja chay egulo diye save korle hoye jabe
+    
+
+-----------------------------------DONE----------------------------------------------------
+ -->
+
